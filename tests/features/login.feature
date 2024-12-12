@@ -1,15 +1,15 @@
-Feature: User login
-  As a user
-  I want to put credentials to login page
-  So that i can access the home page
+Feature: login
+  As an admin
+  I want to login to the admin panel
+  So that I can manage my products
 
   Background:
-    Given the user has navigated to the login page
+    Given the user "admin" has navigated to the login page
 
-  Scenario: Login with valid credentials
-    When user logs in with email "admin@admin.com" and password "admin123456"
+  Scenario: login with valid credentials
+    When user "admin" logs in with email "admin@admin.com" and password "admin123456"
     Then user should be navigated to home page
 
-  Scenario: Login with invalid credentials
-    When user logs in with email "admin@admin.com" and password "123"
-    Then user should get the message "Invalid Credentials"
+  Scenario: login with invalid credentials
+    When user "admin" logs in with email "admin@admin.com" and password "123"
+    Then error message "Invalid Credentials" should be shown
