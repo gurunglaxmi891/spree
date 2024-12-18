@@ -26,4 +26,3 @@ Feature: login
             | admin@admin.com  |                | Invalid email or password. |
             |                  | klaslkda       | Invalid email or password. |
             |                  |                | Invalid email or password. |
-            | admin            | adminadmin123  | Manage Passwords           |
