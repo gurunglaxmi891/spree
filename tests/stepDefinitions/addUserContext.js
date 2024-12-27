@@ -13,15 +13,15 @@ Given('user {string} has logged in to the admin panel with following credentials
     await page.waitForURL("http://127.0.0.1:3000/", { timeout: 5000 });
   });
 
-When('user {string} creates a new user with the following details',async function (user, credentials) {
-  await addUserPage.navigateToAddUsersPage();
+When('user {string} creates a new user with the following details:', async function (user, credentials) {
+  await addUserPage.navigateToUsersPage();
   for (const {email, password, confirmPassword} of credentials.hashes()){
-    await addUserPage.addUser(credentials, email, password, confirmPassword);
+    await addUserPage.addUser(email, password, confirmPassword);
   };
 });
 
 Then('user with email {string} should be listed in the users page',async function (userEmail) {
-  // await page.locator(addUserPage.usersSidebarMenuItemSelector).click();
+  await page.locator(addUserPage.usersSidebarMenuItemSelector).click();
   await addUserPage.checkNewUser();
   await expect(page.locator(addUserPage.checkUserEmailSelector)).toHaveText(userEmail);
   });
